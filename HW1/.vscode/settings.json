@@ -1,0 +1,7 @@
+{
+    "clang-format.executable": "clang-format",
+    "clang-format.style": "Google",
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    }
+}

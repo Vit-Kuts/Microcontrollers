@@ -1,0 +1,152 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Debug",
+            "type": "shell",
+            "command": "cmake --fresh --preset Debug && cmake --build --preset Debug",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Configuration and build Debug",
+            "icon": {
+                "color": "terminal.ansiYellow",
+                "id": "debug"
+            }
+        },
+        {
+            "label": "Build Release",
+            "type": "shell",
+            "command": "cmake --fresh --preset Release && cmake --build --preset Release",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Configuration and build Release",
+            "icon": {
+                "color": "terminal.ansiCyan",
+                "id": "rocket"
+            }
+        },
+        {
+            "label": "Flash STM32",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "C:/msys64/mingw64/share/openocd/scripts/interface/stlink.cfg",
+                "-f",
+                "C:/msys64/mingw64/share/openocd/scripts/target/stm32f4x.cfg",
+                "-c",
+                "program build/${input:firmwareType}/HW1.elf verify reset exit"
+            ],
+            "problemMatcher": [],
+            "detail": "Flash firmware to STM32 (choose Debug/Release)",
+            "icon": {
+                "color": "terminal.ansiGreen",
+                "id": "zap"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Clean Build Folders",
+            "type": "shell",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "if ('${input:cleanOption}' -eq 'Debug') { if (Test-Path 'build/Debug') { Remove-Item -Path 'build/Debug' -Recurse -Force; Write-Host 'Deleted build/Debug folder' } else { Write-Host 'build/Debug folder not found' } }",
+                "if ('${input:cleanOption}' -eq 'Release') { if (Test-Path 'build/Release') { Remove-Item -Path 'build/Release' -Recurse -Force; Write-Host 'Deleted build/Release folder' } else { Write-Host 'build/Release folder not found' } }",
+                "if ('${input:cleanOption}' -eq 'Both') { if (Test-Path 'build/Debug') { Remove-Item -Path 'build/Debug' -Recurse -Force; Write-Host 'Deleted build/Debug folder' }; if (Test-Path 'build/Release') { Remove-Item -Path 'build/Release' -Recurse -Force; Write-Host 'Deleted build/Release folder' }; Write-Host 'Cleanup completed' }"
+            ],
+            "problemMatcher": [],
+            "detail": "Delete build folders (Debug/Release/Both)",
+            "icon": {
+                "color": "terminal.ansiRed",
+                "id": "trash"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "dedicated"
+            }
+        },
+        {
+            "label": "Monitor resume",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "C:/msys64/mingw64/share/openocd/scripts/interface/stlink.cfg",
+                "-f",
+                "C:/msys64/mingw64/share/openocd/scripts/target/stm32f4x.cfg",
+                "-c",
+                "init; resume; exit"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "dedicated"
+            },
+            "detail": "Resume microcontroller after debugging",
+            "icon": {
+                "color": "terminal.ansiBlue",
+                "id": "play"
+            }
+        },
+        {
+            "label": "Sync Sources",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "scripts/add_sources.py"
+            ],
+            "problemMatcher": [],
+            "detail": "Run add_sources.py to synchronize source files",
+            "icon": {
+                "color": "terminal.ansiMagenta",
+                "id": "sync"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "dedicated"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "firmwareType",
+            "description": "Select firmware type to flash:",
+            "type": "pickString",
+            "options": [
+                "Debug",
+                "Release"
+            ],
+            "default": "Debug"
+        },
+        {
+            "id": "cleanOption",
+            "description": "Select which folders to clean:",
+            "type": "pickString",
+            "options": [
+                "Debug",
+                "Release",
+                "Both"
+            ],
+            "default": "Debug"
+        }
+    ]
+}
