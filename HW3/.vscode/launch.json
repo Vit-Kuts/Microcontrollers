@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/Debug/HW3.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "gdbPath": "C:\\msys64\\mingw64\\bin\\gdb-multiarch.exe",
+            "servertype": "openocd",
+            "serverArgs": [
+                "-d3"
+            ],
+            "serverpath": "C:\\msys64\\mingw64\\bin\\openocd.exe",
+            "configFiles": [
+                "C:/msys64/mingw64/share/openocd/scripts/interface/stlink.cfg",
+                "C:/msys64/mingw64/share/openocd/scripts/target/stm32f4x.cfg"
+            ],
+            "svdFile": "",
+            "liveWatch": {
+                "enabled": true
+            },
+            "preLaunchTask": "Build Debug",
+            "runToEntryPoint": "main",
+            "postDebugTask": "Monitor resume"
+        }
+    ]
+}

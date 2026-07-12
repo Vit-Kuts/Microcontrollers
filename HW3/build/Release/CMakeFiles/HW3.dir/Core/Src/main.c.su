@@ -1,0 +1,4 @@
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW3/Core/Src/main.c:120:6:SystemClock_Config	88	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW3/Core/Src/main.c:72:5:main	16	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW3/Core/Src/main.c:253:6:HAL_SPI_RxCpltCallback	0	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW3/Core/Src/main.c:265:6:Error_Handler	0	static
