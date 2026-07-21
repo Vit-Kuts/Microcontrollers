@@ -18,8 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stdint.h"
-// #include "stdint.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -44,16 +42,19 @@
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi3;
+DMA_HandleTypeDef hdma_spi1_tx;
+DMA_HandleTypeDef hdma_spi3_rx;
 
 /* USER CODE BEGIN PV */
-  uint8_t receive_buff = 0x00;
-  uint8_t transmit_buff = 0xFB;
+  uint8_t receive_buff [2] = {0x00, 0x01};
+  uint8_t transmit_buff[2] = {0xFB, 0xBB};
   volatile uint8_t rx_flaga = 0x00;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_DMA_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_SPI3_Init(void);
 /* USER CODE BEGIN PFP */
@@ -62,7 +63,20 @@ static void MX_SPI3_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void DMA_TEST(void) {
+  while (HAL_SPI_GetState(&hspi3) != HAL_SPI_STATE_READY) {}
+  
+  HAL_SPI_Receive_DMA(&hspi3, receive_buff, 2);
+  
+  // Ждем, пока САМ КОНТРОЛЛЕР DMA поднимет флаг активности своего потока
+  // Замените hdma_spi3_rx.Instance на ваш стрим (например, DMA1_Stream0)
+  while (!(hdma_spi3_rx.Instance->CR & DMA_SxCR_EN)) {
+    // Ждём аппаратного включения самого DMA
+  }
+  
 
+  HAL_SPI_Transmit_DMA(&hspi1, transmit_buff, 2);
+}
 /* USER CODE END 0 */
 
 /**
@@ -71,6 +85,7 @@ static void MX_SPI3_Init(void);
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -93,9 +108,13 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_SPI1_Init();
   MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
+  DMA_TEST();
+  // DMA_TEST();
+  //DMA_TEST();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -105,8 +124,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-      HAL_SPI_Transmit(&hspi1, &transmit_buff, 1, 100);
-      HAL_SPI_Receive(&hspi3, &receive_buff, 1, 100);
+
   }
   /* USER CODE END 3 */
 }
@@ -174,7 +192,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.NSS = SPI_NSS_HARD_OUTPUT;
   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
@@ -212,7 +230,7 @@ static void MX_SPI3_Init(void)
   hspi3.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi3.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi3.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi3.Init.NSS = SPI_NSS_SOFT;
+  hspi3.Init.NSS = SPI_NSS_HARD_INPUT;
   hspi3.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi3.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi3.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -224,6 +242,26 @@ static void MX_SPI3_Init(void)
   /* USER CODE BEGIN SPI3_Init 2 */
 
   /* USER CODE END SPI3_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA2_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+  /* DMA2_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
 
 }
 
