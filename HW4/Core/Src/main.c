@@ -18,11 +18,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "string.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "string.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,9 +94,9 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  char ready[] = "READY\n";
-  HAL_UART_Transmit(&huart2,(uint8_t*)ready,strlen(ready),100);
+  HAL_UART_Transmit(&huart2,(uint8_t*)"READY\n", 6, 100);
   HAL_UART_Receive_IT(&huart2, &byte, 1);
+ // HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,6 +107,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     if (flag_start_tx == 1) {
+      HAL_Delay(400);
       flag_start_tx = 0;
       HAL_UART_Transmit(&huart2, (uint8_t*)"LED_TOGGLE\n", 11, 100);
     }
@@ -116,6 +116,8 @@ int main(void)
       flag_rx = 0;
       if (strcmp((char*)rx_buff, "LED_TOGGLE") == 0) {
         HAL_UART_Transmit(&huart2, (uint8_t*)"OK\n", 3, 100);
+        //HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
+        HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
       } else {
         HAL_UART_Transmit(&huart2, (uint8_t*)"unknown_command\n", 16, 100);
       }      
@@ -213,12 +215,23 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PA0 */
   GPIO_InitStruct.Pin = GPIO_PIN_0;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PD15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);

@@ -1,6 +1,6 @@
-C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:132:6:SystemClock_Config	88	static
-C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:71:5:main	32	static
-C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:233:6:HAL_GPIO_EXTI_Callback	0	static
-C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:239:6:HAL_UART_RxCpltCallback	0	static
-C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:254:6:HAL_UART_TxCpltCallback	0	static
-C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:266:6:Error_Handler	0	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:134:6:SystemClock_Config	88	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:70:5:main	40	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:246:6:HAL_GPIO_EXTI_Callback	0	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:252:6:HAL_UART_RxCpltCallback	0	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:267:6:HAL_UART_TxCpltCallback	0	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/Core/Src/main.c:279:6:Error_Handler	0	static
