@@ -57,10 +57,11 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-// char rx_data[20] = {0};
-char rx_buff[10] = {0};
-volatile uint8_t flag_start_tx = 0;
+uint8_t rx_buff[50];
+uint16_t rx_index = 0;
+uint8_t byte;
 volatile uint8_t flag_rx = 0;
+volatile uint8_t flag_start_tx = 0;
 /* USER CODE END 0 */
 
 /**
@@ -96,7 +97,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   char ready[] = "READY\n";
   HAL_UART_Transmit(&huart2,(uint8_t*)ready,strlen(ready),100);
-  HAL_UART_Receive_IT(&huart2, (uint8_t*)rx_buff, 10);
+  HAL_UART_Receive_IT(&huart2, &byte, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -107,24 +108,18 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     if (flag_start_tx == 1) {
-      char tx_data[20] = "LED_TOGGLE\n\0";
-      HAL_UART_Transmit(&huart2, (uint8_t*)tx_data, strlen(tx_data), 100);
       flag_start_tx = 0;
+      HAL_UART_Transmit(&huart2, (uint8_t*)"LED_TOGGLE\n", 11, 100);
     }
 
-    if (flag_rx == 1) {
-      char command[] = "LED_TOGGLE";
-      if (memcmp(rx_buff, command, sizeof(command) - 1) == 0) {
-        HAL_UART_Transmit(&huart2, (uint8_t *)rx_buff, sizeof(rx_buff), 100);
-        char n = '\n';
-        HAL_UART_Transmit(&huart2, (uint8_t *)&n, 1, 100);
-      } else {
-        char message[] = "\nunkown_command\n";
-        HAL_UART_Transmit(&huart2, (uint8_t *)message, strlen(message), 100);
-      }
-      memset(rx_buff, 0, sizeof(rx_buff));
+    if (flag_rx) {
       flag_rx = 0;
-      HAL_UART_Receive_IT(&huart2, (uint8_t *)rx_buff, 10);
+      if (strcmp((char*)rx_buff, "LED_TOGGLE") == 0) {
+        HAL_UART_Transmit(&huart2, (uint8_t*)"OK\n", 3, 100);
+      } else {
+        HAL_UART_Transmit(&huart2, (uint8_t*)"unknown_command\n", 16, 100);
+      }      
+      memset(rx_buff, 0, sizeof(rx_buff));
     }
   }
   /* USER CODE END 3 */
@@ -242,9 +237,18 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-  if (huart->Instance == USART2) {
-    flag_rx = 1;
-  }
+    if (huart->Instance == USART2) {
+      if (byte == '\n' || byte == '\r') {
+        rx_buff[rx_index] = '\0';
+        rx_index = 0;
+        flag_rx = 1;
+      } else {
+        if (rx_index < sizeof(rx_buff) - 1) {
+          rx_buff[rx_index++] = byte;
+        }
+      }
+      HAL_UART_Receive_IT(&huart2, &byte, 1);
+    }
 }
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
@@ -253,17 +257,6 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
   }
 }
 
-void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart) {
-    if (huart->Instance == USART2) {
-        // Очищаем ошибки
-        __HAL_UART_CLEAR_OREFLAG(&huart2);
-        // __HAL_UART_CLEAR_OVERRUNFLAG(&huart2);
-        
-        // Перезапускаем прием
-        HAL_UART_Receive_IT(&huart2, (uint8_t *)rx_buff, 10);
-        flag_rx = 0;  // Сбрасываем флаг, чтобы не обрабатывать мусор
-    }
-}
 /* USER CODE END 4 */
 
 /**
