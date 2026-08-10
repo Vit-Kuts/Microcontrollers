@@ -602,6 +602,18 @@
 			"value" : ""
 		},
 		{
+			"name" : "CMAKE_EXPORT_COMPILE_COMMANDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "No help, variable specified on the command line."
+				}
+			],
+			"type" : "BOOL",
+			"value" : "TRUE"
+		},
+		{
 			"name" : "CMAKE_EXTRA_GENERATOR",
 			"properties" : 
 			[
@@ -1171,10 +1183,10 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "The CMake toolchain file"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "UNINITIALIZED",
 			"value" : "C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW4/cmake/gcc-arm-none-eabi.cmake"
 		},
 		{
