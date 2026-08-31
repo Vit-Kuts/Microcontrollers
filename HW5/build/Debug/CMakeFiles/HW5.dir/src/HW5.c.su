@@ -1,0 +1,6 @@
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW5/src/HW5.c:11:12:HW5_Init	8	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW5/src/HW5.c:20:12:HW5_GetHW5_Data	16	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW5/src/HW5.c:24:12:HW5_IntelHexParse	32	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW5/src/HW5.c:43:12:HW5_RxBufCp	16	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW5/src/HW5.c:48:12:HW5_ConvertCharTo_uint32	24	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW5/src/HW5.c:61:6:HW5_Handler	120	dynamic
