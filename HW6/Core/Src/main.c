@@ -22,9 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <string.h>
-#include <stdio.h>
-#include "usbd_cdc_if.h"
+#include "HW6.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,9 +92,8 @@ int main(void)
   MX_ADC1_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
+  HW6_Init();
   HAL_ADC_Start_IT(&hadc1);
-  volatile uint32_t adc_value_for_com = 0;
-  char usb_tx_buffer[16];
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -104,10 +101,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    adc_value_for_com = HAL_ADC_GetValue(&hadc1);
     HAL_ADC_Start_IT(&hadc1);
-    sprintf(usb_tx_buffer, "%lu\n", adc_value_for_com);
-    CDC_Transmit_FS((uint8_t*)usb_tx_buffer, strlen(usb_tx_buffer));
+    HW6_Handler();
+    
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
