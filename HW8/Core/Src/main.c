@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "RAMDISK.h"
+#include "HW8.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -83,7 +84,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-//  extern uint8_t ramdisk[SECTOR_COUNT][SECTOR_SIZE];
+
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -97,32 +98,18 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_ADC1_Init();
-  // MX_USB_DEVICE_Init();
+  MX_USB_DEVICE_Init();
   MX_TIM2_Init();
   MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
-  
-  FRESULT fr = f_mount(&USERFatFS, USERPath, 1);
-
-  MX_USB_DEVICE_Init();
+  HW8_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    fr = f_mount(&USERFatFS, USERPath, 1);
-    fr = f_open(&USERFile, "LOG.txt", FA_READ);
-
-    if (fr == FR_OK) {
-      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
-      fr = f_close(&USERFile);
-    }
-    else
-    {
-      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
-    }
-    fr = f_mount(0, USERPath, 1);
+    HW8_Handler();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -205,7 +192,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T2_TRGO;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.NbrOfConversion = 1;
-  hadc1.Init.DMAContinuousRequests = ENABLE;
+  hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {

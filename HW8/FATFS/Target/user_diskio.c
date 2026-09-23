@@ -168,7 +168,27 @@ DRESULT USER_ioctl (
 )
 {
   /* USER CODE BEGIN IOCTL */
-    DRESULT res = RES_ERROR;
+DRESULT res = RES_ERROR;
+    switch (cmd) {
+        case CTRL_SYNC:
+            res = RES_OK;
+            break;
+        case GET_SECTOR_COUNT:
+            *(DWORD*)buff = SECTOR_COUNT;
+            res = RES_OK;
+            break;
+        case GET_SECTOR_SIZE:
+            *(WORD*)buff = SECTOR_SIZE;
+            res = RES_OK;
+            break;
+        case GET_BLOCK_SIZE:
+            *(DWORD*)buff = 1;
+            res = RES_OK;
+            break;
+        default:
+            res = RES_PARERR;
+            break;
+    }
     return res;
   /* USER CODE END IOCTL */
 }
