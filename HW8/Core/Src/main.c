@@ -104,14 +104,6 @@ int main(void)
   
   FRESULT fr = f_mount(&USERFatFS, USERPath, 1);
 
-    //   if (fr == FR_NO_FILESYSTEM) {
-    //     BYTE work[_MAX_SS];
-    //     fr = f_mkfs(USERPath, FM_ANY, 0, work, sizeof(work));
-    //     if (fr == FR_OK) {
-    //         f_mount(NULL, USERPath, 0);          // размонтируем
-    //         fr = f_mount(&USERFatFS, USERPath, 1); // монтируем заново
-    //     }
-    // }
   MX_USB_DEVICE_Init();
   /* USER CODE END 2 */
 
@@ -119,12 +111,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-    // fr = f_mount(NULL, USERPath, 0);
+    fr = f_mount(&USERFatFS, USERPath, 1);
+    fr = f_open(&USERFile, "LOG.txt", FA_READ);
 
-     fr = f_mount(&USERFatFS, USERPath, 1);
-    fr = f_open(&USERFile, "LOG", FA_READ);
-    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
     if (fr == FR_OK) {
       HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
       fr = f_close(&USERFile);
@@ -134,6 +123,8 @@ int main(void)
       HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
     }
     fr = f_mount(0, USERPath, 1);
+    /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -314,10 +305,14 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
+
   /*Configure GPIO pin : PD13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
