@@ -1,0 +1,5 @@
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/Core/Src/stm32f4xx_hal_msp.c:63:6:HAL_MspInit	8	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/Core/Src/stm32f4xx_hal_msp.c:86:6:HAL_ADC_MspInit	48	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/Core/Src/stm32f4xx_hal_msp.c:142:6:HAL_ADC_MspDeInit	8	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/Core/Src/stm32f4xx_hal_msp.c:175:6:HAL_TIM_Base_MspInit	8	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/Core/Src/stm32f4xx_hal_msp.c:198:6:HAL_TIM_Base_MspDeInit	0	static

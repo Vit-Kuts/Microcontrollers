@@ -1,0 +1,8 @@
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/build/Release/CMakeFiles/HW8.dir
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/build/Release/CMakeFiles/edit_cache.dir
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/build/Release/CMakeFiles/rebuild_cache.dir
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/build/Release/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/build/Release/cmake/stm32cubemx/CMakeFiles/USB_Device_Library.dir
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/build/Release/cmake/stm32cubemx/CMakeFiles/FatFs.dir
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/build/Release/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/build/Release/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir

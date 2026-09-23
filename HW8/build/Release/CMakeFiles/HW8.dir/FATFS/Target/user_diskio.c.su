@@ -1,0 +1,5 @@
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/FATFS/Target/user_diskio.c:80:9:USER_initialize	0	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/FATFS/Target/user_diskio.c:164:9:USER_ioctl	0	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/FATFS/Target/user_diskio.c:111:9:USER_read	24	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/FATFS/Target/user_diskio.c:137:9:USER_write	24	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/FATFS/Target/user_diskio.c:94:9:USER_status	0	static
