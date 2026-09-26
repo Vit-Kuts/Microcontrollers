@@ -1,3 +1,3 @@
-C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/src/HW8.c:33:6:HW8_Init	536	static
-C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/src/HW8.c:135:6:HW8_Handler	72	static
-C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/src/HW8.c:197:6:HAL_ADC_ConvCpltCallback	0	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/src/HW8.c:38:6:HW8_Init	528	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/src/HW8.c:61:6:HW8_Handler	72	static
+C:/Users/vital/Desktop/Vitaly/MFTI/Microcontrollers/HW8/src/HW8.c:112:6:HAL_ADC_ConvCpltCallback	0	static

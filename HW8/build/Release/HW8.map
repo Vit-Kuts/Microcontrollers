@@ -1388,7 +1388,7 @@ LOAD C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/c
                 0x08000000                g_pfnVectors
                 0x08000188                        . = ALIGN (0x4)
 
-.text           0x080001c0     0x7644
+.text           0x080001c0     0x74d0
                 0x080001c0                        . = ALIGN (0x4)
  *(.text)
  .text          0x080001c0       0x30 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
@@ -2258,150 +2258,149 @@ LOAD C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/c
                 0x08007284                DMA1_Stream3_IRQHandler
  *fill*         0x08007286        0x2 
  .text.HW8_Init
-                0x08007288      0x1d8 CMakeFiles/HW8.dir/src/HW8.c.obj
+                0x08007288       0x68 CMakeFiles/HW8.dir/src/HW8.c.obj
                 0x08007288                HW8_Init
  .text.HW8_Handler
-                0x08007460       0xd0 CMakeFiles/HW8.dir/src/HW8.c.obj
-                0x08007460                HW8_Handler
+                0x080072f0       0xcc CMakeFiles/HW8.dir/src/HW8.c.obj
+                0x080072f0                HW8_Handler
  .text.HAL_ADC_ConvCpltCallback
-                0x08007530       0x1c CMakeFiles/HW8.dir/src/HW8.c.obj
-                0x08007530                HAL_ADC_ConvCpltCallback
+                0x080073bc       0x1c CMakeFiles/HW8.dir/src/HW8.c.obj
+                0x080073bc                HAL_ADC_ConvCpltCallback
  .text.__udivmoddi4
-                0x0800754c      0x2a0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x0800754c                __udivmoddi4
+                0x080073d8      0x2a0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x080073d8                __udivmoddi4
  *(.glue_7)
- .glue_7        0x080077ec        0x0 linker stubs
+ .glue_7        0x08007678        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x080077ec        0x0 linker stubs
+ .glue_7t       0x08007678        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x080077ec        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x08007678        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x080077ec        0x4 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crti.o
-                0x080077ec                _init
- .init          0x080077f0        0x8 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x08007678        0x4 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crti.o
+                0x08007678                _init
+ .init          0x0800767c        0x8 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x080077f8        0x4 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crti.o
-                0x080077f8                _fini
- .fini          0x080077fc        0x8 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtn.o
-                0x08007804                        . = ALIGN (0x4)
-                0x08007804                        _etext = .
+ .fini          0x08007684        0x4 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crti.o
+                0x08007684                _fini
+ .fini          0x08007688        0x8 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtn.o
+                0x08007690                        . = ALIGN (0x4)
+                0x08007690                        _etext = .
 
-.vfp11_veneer   0x08007804        0x0
- .vfp11_veneer  0x08007804        0x0 linker stubs
+.vfp11_veneer   0x08007690        0x0
+ .vfp11_veneer  0x08007690        0x0 linker stubs
 
-.v4_bx          0x08007804        0x0
- .v4_bx         0x08007804        0x0 linker stubs
+.v4_bx          0x08007690        0x0
+ .v4_bx         0x08007690        0x0 linker stubs
 
-.iplt           0x08007804        0x0
- .iplt          0x08007804        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x08007690        0x0
+ .iplt          0x08007690        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x08007804      0x1b8
-                0x08007804                        . = ALIGN (0x4)
+.rodata         0x08007690      0x1b0
+                0x08007690                        . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.AHBPrescTable
-                0x08007804       0x10 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj
-                0x08007804                AHBPrescTable
+                0x08007690       0x10 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj
+                0x08007690                AHBPrescTable
  .rodata.flagBitshiftOffset.0
-                0x08007814        0x8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+                0x080076a0        0x8 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
  .rodata.follow_path.str1.1
-                0x0800781c       0xa1 cmake/stm32cubemx/CMakeFiles/FatFs.dir/__/__/Middlewares/Third_Party/FatFs/src/ff.c.obj
+                0x080076a8       0x9a cmake/stm32cubemx/CMakeFiles/FatFs.dir/__/__/Middlewares/Third_Party/FatFs/src/ff.c.obj
                                   0xf (size before relaxing)
  .rodata.f_mkfs.str1.1
-                0x080078bd        0x0 cmake/stm32cubemx/CMakeFiles/FatFs.dir/__/__/Middlewares/Third_Party/FatFs/src/ff.c.obj
+                0x08007742        0x0 cmake/stm32cubemx/CMakeFiles/FatFs.dir/__/__/Middlewares/Third_Party/FatFs/src/ff.c.obj
                                  0x34 (size before relaxing)
- *fill*         0x080078bd        0x1 
- .rodata.cst.0  0x080078be        0xe cmake/stm32cubemx/CMakeFiles/FatFs.dir/__/__/Middlewares/Third_Party/FatFs/src/ff.c.obj
+ .rodata.cst.0  0x08007742        0xe cmake/stm32cubemx/CMakeFiles/FatFs.dir/__/__/Middlewares/Third_Party/FatFs/src/ff.c.obj
  .rodata.cst32.1
-                0x080078cc        0xe cmake/stm32cubemx/CMakeFiles/FatFs.dir/__/__/Middlewares/Third_Party/FatFs/src/ff.c.obj
- .rodata.ExCvt  0x080078da       0x80 cmake/stm32cubemx/CMakeFiles/FatFs.dir/__/__/Middlewares/Third_Party/FatFs/src/ff.c.obj
+                0x08007750        0xe cmake/stm32cubemx/CMakeFiles/FatFs.dir/__/__/Middlewares/Third_Party/FatFs/src/ff.c.obj
+ .rodata.ExCvt  0x0800775e       0x80 cmake/stm32cubemx/CMakeFiles/FatFs.dir/__/__/Middlewares/Third_Party/FatFs/src/ff.c.obj
  .rodata.USBD_FS_ManufacturerStrDescriptor.str1.1
-                0x0800795a        0x0 CMakeFiles/HW8.dir/USB_DEVICE/App/usbd_desc.c.obj
+                0x080077de        0x0 CMakeFiles/HW8.dir/USB_DEVICE/App/usbd_desc.c.obj
                                  0x13 (size before relaxing)
  .rodata.USBD_FS_ProductStrDescriptor.str1.1
-                0x0800795a        0x0 CMakeFiles/HW8.dir/USB_DEVICE/App/usbd_desc.c.obj
+                0x080077de        0x0 CMakeFiles/HW8.dir/USB_DEVICE/App/usbd_desc.c.obj
                                  0x13 (size before relaxing)
  .rodata.USBD_FS_ConfigStrDescriptor.str1.1
-                0x0800795a        0x0 CMakeFiles/HW8.dir/USB_DEVICE/App/usbd_desc.c.obj
+                0x080077de        0x0 CMakeFiles/HW8.dir/USB_DEVICE/App/usbd_desc.c.obj
                                   0xb (size before relaxing)
  .rodata.USBD_FS_InterfaceStrDescriptor.str1.1
-                0x0800795a        0x0 CMakeFiles/HW8.dir/USB_DEVICE/App/usbd_desc.c.obj
+                0x080077de        0x0 CMakeFiles/HW8.dir/USB_DEVICE/App/usbd_desc.c.obj
                                   0xe (size before relaxing)
  .rodata.STORAGE_Inquirydata_FS
-                0x0800795a       0x24 CMakeFiles/HW8.dir/USB_DEVICE/App/usbd_storage_if.c.obj
-                0x0800795a                STORAGE_Inquirydata_FS
+                0x080077de       0x24 CMakeFiles/HW8.dir/USB_DEVICE/App/usbd_storage_if.c.obj
+                0x080077de                STORAGE_Inquirydata_FS
  .rodata.HW8_Handler.str1.1
-                0x0800797e        0x0 CMakeFiles/HW8.dir/src/HW8.c.obj
-                                 0x1f (size before relaxing)
- *fill*         0x0800797e        0x2 
+                0x08007802        0x0 CMakeFiles/HW8.dir/src/HW8.c.obj
+                                 0x18 (size before relaxing)
+ *fill*         0x08007802        0x2 
  .rodata.str1.4
-                0x08007980       0x39 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-nano-svfprintf.o)
+                0x08007804       0x39 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-nano-svfprintf.o)
                                  0x13 (size before relaxing)
  .rodata.str1.4
-                0x080079b9        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0800783d        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-nano-vfprintf_i.o)
                                  0x25 (size before relaxing)
-                0x080079bc                        . = ALIGN (0x4)
- *fill*         0x080079b9        0x3 
+                0x08007840                        . = ALIGN (0x4)
+ *fill*         0x0800783d        0x3 
 
-.ARM.extab      0x080079bc        0x0
-                0x080079bc                        . = ALIGN (0x4)
+.ARM.extab      0x08007840        0x0
+                0x08007840                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x080079bc                        . = ALIGN (0x4)
+                0x08007840                        . = ALIGN (0x4)
 
-.ARM            0x080079bc        0x8
-                0x080079bc                        . = ALIGN (0x4)
-                0x080079bc                        __exidx_start = .
+.ARM            0x08007840        0x8
+                0x08007840                        . = ALIGN (0x4)
+                0x08007840                        __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x080079bc        0x8 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy.o)
- .ARM.exidx     0x080079c4        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strlen.o)
+ .ARM.exidx     0x08007840        0x8 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memcpy.o)
+ .ARM.exidx     0x08007848        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-strlen.o)
                                   0x8 (size before relaxing)
- .ARM.exidx     0x080079c4        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memchr.o)
+ .ARM.exidx     0x08007848        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-memchr.o)
                                   0x8 (size before relaxing)
  .ARM.exidx.text.__udivmoddi4
-                0x080079c4        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x08007848        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
                                   0x8 (size before relaxing)
-                0x080079c4                        __exidx_end = .
-                0x080079c4                        . = ALIGN (0x4)
+                0x08007848                        __exidx_end = .
+                0x08007848                        . = ALIGN (0x4)
 
-.preinit_array  0x080079c4        0x0
-                0x080079c4                        . = ALIGN (0x4)
-                0x080079c4                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08007848        0x0
+                0x08007848                        . = ALIGN (0x4)
+                0x08007848                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x080079c4                        PROVIDE (__preinit_array_end = .)
-                0x080079c4                        . = ALIGN (0x4)
+                0x08007848                        PROVIDE (__preinit_array_end = .)
+                0x08007848                        . = ALIGN (0x4)
 
-.init_array     0x080079c4        0x4
-                0x080079c4                        . = ALIGN (0x4)
-                0x080079c4                        PROVIDE (__init_array_start = .)
+.init_array     0x08007848        0x4
+                0x08007848                        . = ALIGN (0x4)
+                0x08007848                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x080079c4        0x4 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
-                0x080079c8                        PROVIDE (__init_array_end = .)
-                0x080079c8                        . = ALIGN (0x4)
+ .init_array    0x08007848        0x4 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
+                0x0800784c                        PROVIDE (__init_array_end = .)
+                0x0800784c                        . = ALIGN (0x4)
 
-.fini_array     0x080079c8        0x4
-                0x080079c8                        . = ALIGN (0x4)
-                0x080079c8                        PROVIDE (__fini_array_start = .)
+.fini_array     0x0800784c        0x4
+                0x0800784c                        . = ALIGN (0x4)
+                0x0800784c                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080079c8        0x4 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
-                0x080079cc                        PROVIDE (__fini_array_end = .)
-                0x080079cc                        . = ALIGN (0x4)
-                0x080079cc                        _siccmram = LOADADDR (.ccmram)
+ .fini_array    0x0800784c        0x4 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08007850                        PROVIDE (__fini_array_end = .)
+                0x08007850                        . = ALIGN (0x4)
+                0x08007850                        _siccmram = LOADADDR (.ccmram)
 
-.rel.dyn        0x080079cc        0x0
- .rel.iplt      0x080079cc        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08007850        0x0
+ .rel.iplt      0x08007850        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
 
-.ccmram         0x10000000        0x0 load address 0x080079cc
+.ccmram         0x10000000        0x0 load address 0x08007850
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _sccmram = .
  *(.ccmram)
  *(.ccmram*)
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _eccmram = .
-                0x080079cc                        _sidata = LOADADDR (.data)
+                0x08007850                        _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x164 load address 0x080079cc
+.data           0x20000000      0x164 load address 0x08007850
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -2470,10 +2469,10 @@ LOAD C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/c
  *(.RamFunc*)
                 0x20000164                        . = ALIGN (0x4)
 
-.igot.plt       0x20000164        0x0 load address 0x08007b30
+.igot.plt       0x20000164        0x0 load address 0x080079b4
  .igot.plt      0x20000164        0x0 C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/crtbegin.o
 
-.tdata          0x20000164        0x0 load address 0x08007b30
+.tdata          0x20000164        0x0 load address 0x080079b4
  *(.tdata .tdata.* .gnu.linkonce.td.*)
                 0x20000164                        . = ALIGN (0x4)
                 0x20000164                        _edata = .
@@ -2490,7 +2489,7 @@ LOAD C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/c
                 [!provide]                        PROVIDE (__data_source_end = __tdata_source_end)
                 [!provide]                        PROVIDE (__data_source_size = (__data_source_end - __data_source))
 
-.tbss           0x20000164        0x0 load address 0x08007b30
+.tbss           0x20000164        0x0 load address 0x080079b4
                 0x20000164                        _sbss = .
                 0x20000164                        __bss_start__ = _sbss
  *(.tbss .tbss.*)
@@ -2507,7 +2506,7 @@ LOAD C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/c
                 [!provide]                        PROVIDE (__arm32_tls_tcb_offset = MAX (0x8, __tls_align))
                 [!provide]                        PROVIDE (__arm64_tls_tcb_offset = MAX (0x10, __tls_align))
 
-.bss            0x20000164    0x19450 load address 0x08007b30
+.bss            0x20000164    0x19450 load address 0x080079b4
  *(.bss)
  .bss           0x20000164      0x13c C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libg_nano.a(libc_a-findfp.o)
                 0x20000164                __sf
@@ -2576,7 +2575,7 @@ LOAD C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/c
                 0x2000149c                hadc1
  .bss.__sbrk_heap_end
                 0x200014e4        0x4 CMakeFiles/HW8.dir/Core/Src/sysmem.c.obj
- .bss.hw8_stage
+ .bss.hw8_state
                 0x200014e8        0x1 CMakeFiles/HW8.dir/src/HW8.c.obj
  *fill*         0x200014e9        0x1 
  .bss.hw8_adc_buf
@@ -2594,7 +2593,7 @@ LOAD C:/msys64/mingw64/bin/../lib/gcc/arm-none-eabi/13.3.0/thumb/v7e-m+fp/hard/c
                 [!provide]                        PROVIDE (__bss_size = (__bss_end - __bss_start))
 
 ._user_heap_stack
-                0x200195b4      0x604 load address 0x08007b30
+                0x200195b4      0x604 load address 0x080079b4
                 0x200195b8                        . = ALIGN (0x8)
  *fill*         0x200195b4        0x4 
                 [!provide]                        PROVIDE (end = .)
