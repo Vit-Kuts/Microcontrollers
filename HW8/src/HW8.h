@@ -5,7 +5,7 @@
 #include "ff.h"
 
 /* Количество измерений */
-#define HW8_SAMPLES 100
+#define HW8_SAMPLES 1000
 
 typedef enum {DMA_BUSY, DMA_READY, CSV_READY, HW8_ERR} HW8_state;
 
