@@ -4,13 +4,15 @@
 #include <stdint.h>
 #include "ff.h"
 
-/* Количество измерений */
-#define HW8_SAMPLES 1000
-
+  #define HW8_SAMPLES 3000
+  #define BUFFER_SIZE 100
+  #define ARR_VALUE   999
+  #define AMPLITUDE   427   
+  #define OFFSET      500
 typedef enum {DMA_BUSY, DMA_READY, CSV_READY, HW8_ERR} HW8_state;
 
 /* Функции */
-void HW8_Init(void);        // Инициализация: монтирование FatFs
-void HW8_Handler(void);     // Основной обработчик (вызывать в while)
+void HW8_Init(void);        
+void HW8_Handler(void);     
 
 #endif /* __HW8_H */

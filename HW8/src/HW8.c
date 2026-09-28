@@ -1,5 +1,6 @@
 #include "HW8.h"
 
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -7,7 +8,9 @@
 #include "main.h"
 #include "usb_device.h"
 
+
 /* Внешние объекты из main.c / CubeMX */
+extern TIM_HandleTypeDef htim4;
 extern ADC_HandleTypeDef hadc1;
 extern TIM_HandleTypeDef htim2;
 extern DMA_HandleTypeDef hdma_adc1;
@@ -21,16 +24,32 @@ extern FIL USERFile; /* Дескриптор открытого файла. Cube
                      (f_open, f_read, f_close). при закрытии файла, структура
                      освобождается и доступна для открытия другого файла */
 
-/* Буфер для DMA-измерений */
+static uint16_t pwm_duty_buffer[BUFFER_SIZE];
 static uint16_t hw8_adc_buf[HW8_SAMPLES];
-
 static HW8_state hw8_state = DMA_BUSY;
 
 /* -------------------- Вспомогательные -------------------- */
 
-/* Перевод кода АЦП (12 бит) в милливольты при Vref = 3300 мВ */
 static uint32_t HW8_AdcToMv(uint16_t adc) {
   return ((uint32_t)adc * 3300U) / 4095U;
+}
+
+static void Fill_Sine_Buffer(void) {
+  for (int i = 0; i < BUFFER_SIZE; i++) {
+    float phase = 2.0f * (float)M_PI * (float)i / (float)BUFFER_SIZE;
+    float value = (float)OFFSET + (float)AMPLITUDE * sinf(phase);
+
+    if (value < 0.0f) value = 0.0f;
+    if (value > 999.0f) value = 999.0f;
+
+    pwm_duty_buffer[i] = (uint16_t)(value + 0.5f);
+  }
+}
+
+static void PWM_Init(void) {
+  Fill_Sine_Buffer();
+  HAL_TIM_PWM_Start_DMA(&htim4, TIM_CHANNEL_2, (uint32_t *)pwm_duty_buffer,
+                        BUFFER_SIZE);
 }
 
 /* -------------------- Инициализация -------------------- */
@@ -39,11 +58,13 @@ void HW8_Init(void) {
   FRESULT fr;
   BYTE work[_MAX_SS];
 
-  /* ЭТАП 1: Монтирование диска */
+  PWM_Init();
+
+  /* Монтирование диска */
   fr = f_mount(&USERFatFS, USERPath, 1);
 
   if (fr == FR_NO_FILESYSTEM) {
-    /* ЭТАП 2: Файловой системы нет — создаём */
+    /* Файловой системы нет — создаём */
     fr = f_mkfs(USERPath, FM_FAT, 0, work, sizeof(work));
 
     /* Перемонтируем, чтобы FatFs «увидел» новую файловую систему */
@@ -51,7 +72,7 @@ void HW8_Init(void) {
     fr = f_mount(&USERFatFS, USERPath, 1);
   }
 
-  /* ЭТАП 3: Запуск сбора данных */
+  /* Запуск сбора данных */
   HAL_TIM_Base_Start(&htim2);
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *)hw8_adc_buf, HW8_SAMPLES);
 }
@@ -59,13 +80,13 @@ void HW8_Init(void) {
 /* -------------------- Основной обработчик -------------------- */
 
 void HW8_Handler(void) {
-  /* Этап 1: ждём, пока DMA соберёт HW8_SAMPLES измерений */
+  /* ждём, пока DMA соберёт HW8_SAMPLES измерений */
   if (hw8_state == DMA_BUSY) {
     /* HAL_ADC_ConvCpltCallback выставляет hw8_state = DMA_READY (см. ниже) */
     return;
   }
 
-  /* Этап 2: данные собраны — останавливаем ADC и TIM, пишем CSV */
+  /* данные собраны — останавливаем ADC и TIM, пишем CSV */
   if (hw8_state == DMA_READY) {
     HAL_ADC_Stop_DMA(&hadc1);
     HAL_TIM_Base_Stop(&htim2);
@@ -97,7 +118,7 @@ void HW8_Handler(void) {
     return;
   }
 
-  /* Этап 3: CSV записан — инициализируем USB MSC */
+  /* CSV записан — инициализируем USB MSC */
   if (hw8_state == CSV_READY) {
     MX_USB_DEVICE_Init();
     hw8_state = HW8_ERR;  // больше ничего не делаем

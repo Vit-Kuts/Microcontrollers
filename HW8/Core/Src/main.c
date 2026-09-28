@@ -107,9 +107,6 @@ int main(void)
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   HW8_Init();
-
-  uint16_t pwm_buff[2] = {999,0};
-  HAL_TIM_PWM_Start_DMA(&htim4,TIM_CHANNEL_2, (uint32_t *)pwm_buff,2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
